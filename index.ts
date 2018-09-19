@@ -1,6 +1,6 @@
 const uninitialized = Symbol('uninitialized')
 
-export const drawElementsWithProbability = <E, V>(
+export default <E, V>(
   array: E[],
   count: number,
   valueLens: (e: E) => V,
