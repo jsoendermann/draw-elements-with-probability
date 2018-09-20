@@ -1,6 +1,6 @@
 ### Input
 
-- an array A of elements with a value v and a probability p
+- an array A of elements, each with a probability p
 - a number n
 
 ### Output

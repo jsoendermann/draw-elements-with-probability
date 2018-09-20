@@ -1,34 +1,32 @@
 const uninitialized = Symbol('uninitialized')
 
-export default <E, V>(
-  array: E[],
+export default <T>(
+  array: T[],
   count: number,
-  valueLens: (e: E) => V,
-  probLens: (e: E) => number,
-) => {
+  probLens: (e: T) => number,
+): T[] => {
   if (array.length === 0) {
     throw new Error(`Can't draw from an empty array`)
   }
 
-  let drawnValues: V[] = []
+  let drawnValues: T[] = []
   for (let i = 0; i < count; i++) {
     if (array.length === 1) {
-      drawnValues.push(valueLens(array[0]))
+      drawnValues.push(array[0])
       continue
     }
-    let drawnValue: V | typeof uninitialized = uninitialized
+    let drawnValue: T | typeof uninitialized = uninitialized
     do {
       let n = Math.random()
       let j = 0
       while (n > 0) {
-        const e = array[j]
-        if (!e) {
+        const value = array[j]
+        if (!value) {
           throw new Error(
             'Error drawing value: probabilities not properly normalized',
           )
         }
-        const value = valueLens(e)
-        const prob = probLens(e)
+        const prob = probLens(value)
         drawnValue = value
         n -= prob
         j++
