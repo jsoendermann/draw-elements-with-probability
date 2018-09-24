@@ -1,4 +1,4 @@
-const uninitialized = Symbol('uninitialized')
+const uninitialized = 'UNINITIALIZED'
 
 export default <T>(
   array: T[],
@@ -15,7 +15,7 @@ export default <T>(
       drawnValues.push(array[0])
       continue
     }
-    let drawnValue: T | typeof uninitialized = uninitialized
+    let drawnValue: T | 'UNINITIALIZED' = uninitialized
     do {
       let n = Math.random()
       let j = 0

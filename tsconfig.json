@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
     "declaration": true,
-    "lib": ["es2015", "es2015.symbol"]
+    "lib": ["es2015"]
   }
 }
